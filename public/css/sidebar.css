@@ -1,0 +1,7 @@
+.sidebar {
+    top: 0;
+    left: 0;
+    background-color: #4AC6B7;
+    position: fixed;
+    overflow-y: auto;
+}
