@@ -2,6 +2,7 @@
 
 @section('content')
     
+    {{-- Seccion para agregar una nueva tarea --}}
     <div class="mb-3">
         <form class="d-flex flex-row" method="POST" action="{{ route('altaTarea') }}">
             @csrf
@@ -14,6 +15,8 @@
         </form>
     </div>
 
+    {{-- Lista de tareas
+    Recorre la consulta que se trae con la vista y agrega las tareas a un contenedor --}}
     <h1 style="font-size: 30px">Tareas</h1>
 
     @foreach ($tareas as $tarea)
@@ -53,7 +56,7 @@
 
                     <div class="d-flex flex-row align-items-center justify-content-end col-md-2">
                         @if ($tarea->terminado == false)
-                            <button type="submit" class="btn btn-primary" style="background-color:#80D27E; border:#80D27E">Hecho</button>
+                            <button type="submit" class="btn btn-primary" style="background-color:#80D27E; border:#80D27E">Completar</button>
                         @else
                             <button type="submit" class="btn"><img src="{{asset('images/borrar.png')}}" alt="img_borrar" style="height:25px; width:25px"></button>
                         @endif
@@ -64,7 +67,7 @@
     @endforeach
 
     <div class="d-flex flex-row justify-content-end">
-        <button class="btn btn-primary">Exportar a XLSX</button>
+        <a class="btn btn-primary" href="{{route('exportar')}}">Exportar</a>
     </div>
 
 @endsection

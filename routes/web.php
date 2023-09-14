@@ -18,3 +18,4 @@ Route::get('/', [TareaController::class,'index'])->name('index');
 Route::post('/alta-tarea', [TareaController::class,'store'])->name('altaTarea');
 Route::post('/modificar-tarea', [TareaController::class,'update'])->name('modificarTarea');
 Route::post('/eliminar-tarea', [TareaController::class,'delete'])->name('eliminarTarea');
+Route::get('/exportar', [TareaController::class,'export'])->name('exportar');

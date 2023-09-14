@@ -14,6 +14,7 @@
 
 <body>
     <div class="container-fluid row" style="padding-left: 0px; margin-left:0px; padding-right: 0px; margin-right: 0px;">
+        
         {{-- Sidebar --}}
         <div class="sidebar col-md-2 d-flex flex-column" style="padding: 20px">
             <div class="d-flex flex-column justify-content-center align-items-center">
@@ -27,7 +28,7 @@
         </div>
 
         {{-- Contenido --}}
-        <div id="contenidoDerecha" class="col offset-md-2 mt-4" style="padding:20px">
+        <div class="col offset-md-2 mt-4" style="padding:20px">
             @yield('content')
         </div>
 

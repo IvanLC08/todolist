@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Tarea;
+use PDF;
 
 class TareaController extends Controller
 {
+    /**
+     * Punto de entrada de la aplicacion
+     *
+     */
     public function index(Request $request)
     {
         $tareas = DB::table('tareas')
@@ -68,4 +73,16 @@ class TareaController extends Controller
         $tarea = Tarea::find($request->id_tarea)->delete();
         return redirect()->back();
     }
+
+    /**
+     * Export the specified resource
+     *
+     */
+    public function export()
+    {
+        $tareas = Tarea::all();
+        $pdf = \PDF::loadView('tareas', compact('tareas'))->setPaper('a4', 'landscape');
+        return $pdf->stream('tareas.pdf');
+    }
+
 }
