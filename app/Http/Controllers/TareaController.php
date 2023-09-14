@@ -5,10 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Tarea;
-use Carbon\Carbon;
 
 class TareaController extends Controller
 {
+    public function index(Request $request)
+    {
+        $tareas = DB::table('tareas')
+        ->select('tareas.id_tarea',
+                    'tareas.nombre_tarea',
+                    'tareas.fecha_creacion',
+                    'tareas.fecha_termino',
+                    'tareas.terminado')
+        ->get();
+
+        return view('home', compact('tareas'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -24,11 +36,36 @@ class TareaController extends Controller
         $tarea = new Tarea();
         $tarea -> nombre_tarea = $request->input('Nombre_tarea');
         $tarea->fecha_creacion = now('America/Mexico_City');
-        $tarea -> id_estatus = 1;
-        $tarea -> id_usuario = $request->input('id_usuario');
         $tarea -> save();
 
-        return redirect()->back()->with('success','HECHO');
-        // return redirect()->route('home')->with('success','Tarea creada correctamente');
+        return redirect()->back();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+        $tarea = Tarea::find($request->id_tarea);
+        $tarea->terminado = true;
+        $tarea->fecha_termino = now('America/Mexico_City');
+        $tarea -> update();
+
+        return redirect()->back();
+    }
+
+    /**
+     * Delete the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Request $request)
+    {
+        $tarea = Tarea::find($request->id_tarea)->delete();
+        return redirect()->back();
     }
 }

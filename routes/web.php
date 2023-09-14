@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TareaController;
 
 /*
@@ -16,18 +14,7 @@ use App\Http\Controllers\TareaController;
 |
 */
 
-//Sesion
-Route::get('/',[LoginController::class, 'index'])->name('login');
-Route::post('/',[LoginController::class, 'login'])->name('iniciar-sesion');
-Route::get('/logout',[LoginController::class, 'logout'])->name('cerrar-sesion');
-
-//Usuario
-Route::get('/registro', [UsuarioController::class,'index'])->name('registro');
-Route::post('/alta-usuario', [UsuarioController::class,'store'])->name('altaUsuario');
-Route::get('/home/{idUsuario}', [UsuarioController::class,'home'])->name('home');
-Route::get('/completadas', [UsuarioController::class,'completadas'])->name('completadas');
-Route::get('/pendientes', [UsuarioController::class,'pendientes'])->name('pendientes');
-
-//Tarea
+Route::get('/', [TareaController::class,'index'])->name('index');
 Route::post('/alta-tarea', [TareaController::class,'store'])->name('altaTarea');
-Route::get('/obtener-tareas', [TareaController::class,'obtenerTareas'])->name('obtenerTareas');
+Route::post('/modificar-tarea', [TareaController::class,'update'])->name('modificarTarea');
+Route::post('/eliminar-tarea', [TareaController::class,'delete'])->name('eliminarTarea');

@@ -20,19 +20,9 @@
                 <h1 class="mt-4 mb-4" style="font-weight: 800 ; color:white">TO DO</h1>
             </div>
             
-            {{-- <div class="d-flex flex-row justify-content-start align-items-center gap-2 mb-4">
+            <div class="d-flex flex-row justify-content-start align-items-center gap-2 mb-4">
                 <img src="{{asset('images/home.png')}}" alt="img_home" style="height: 30px">
-                <a class="sidebar_text" href="{{route('home')}}">Tareas</a>
-            </div> --}}
-
-            <div class="d-flex flex-row justify-content-start align-items-center gap-2 mb-4">
-                <img src="{{asset('images/cheque.png')}}" alt="img_completadas" style="height: 30px">
-                <a class="sidebar_text" href="{{route('completadas')}}">Completadas</a>
-            </div>
-
-            <div class="d-flex flex-row justify-content-start align-items-center gap-2 mb-4">
-                <img src="{{asset('images/pendiente.png')}}" alt="img_pendientes" style="height: 30px">
-                <a class="sidebar_text" href="{{route('pendientes')}}">Pendientes</a>
+                <a class="sidebar_text" href="{{route('index')}}">Tareas</a>
             </div>
         </div>
 
