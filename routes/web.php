@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TareaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Sesion
+Route::get('/',[LoginController::class, 'index'])->name('login');
+Route::post('/',[LoginController::class, 'login'])->name('iniciar-sesion');
+Route::get('/logout',[LoginController::class, 'logout'])->name('cerrar-sesion');
 
-Route::get('/login', function () {
-    return view('login');
-});
+//Usuario
+Route::get('/registro', [UsuarioController::class,'index'])->name('registro');
+Route::post('/alta-usuario', [UsuarioController::class,'store'])->name('altaUsuario');
+Route::get('/home/{idUsuario}', [UsuarioController::class,'home'])->name('home');
+Route::get('/completadas', [UsuarioController::class,'completadas'])->name('completadas');
+Route::get('/pendientes', [UsuarioController::class,'pendientes'])->name('pendientes');
 
-Route::get('/home', function () {
-    return view('home');
-});
+//Tarea
+Route::post('/alta-tarea', [TareaController::class,'store'])->name('altaTarea');
+Route::get('/obtener-tareas', [TareaController::class,'obtenerTareas'])->name('obtenerTareas');

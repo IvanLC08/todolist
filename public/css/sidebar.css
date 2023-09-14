@@ -4,4 +4,14 @@
     background-color: #4AC6B7;
     position: fixed;
     overflow-y: auto;
+    height: 100%;
+}
+
+.sidebar_text{
+    color:white;
+    text-decoration: none;
+}
+
+.sidebar_text:hover{
+    color:black;
 }
