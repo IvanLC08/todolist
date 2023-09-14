@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Administrador</title>
+    <title>TO DO LIST</title>
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
+    <link rel="icon" href="{{asset('images/cheque.png')}}">
     @vite(['resources/js/app.js'])
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-
     <div class="container-fluid row" style="padding-left: 0px; margin-left:0px; padding-right: 0px; margin-right: 0px;">
         {{-- Sidebar --}}
         <div class="sidebar col-md-2 d-flex flex-column" style="padding: 20px">
